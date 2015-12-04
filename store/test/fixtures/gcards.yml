@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Computer_id: 
+  price: 1
+  name: MyString
+
+two:
+  Computer_id: 
+  price: 1
+  name: MyString
