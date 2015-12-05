@@ -1,0 +1,8 @@
+<h1> Computer index </h1>
+
+<% @computers.each do |computer| %>
+  <%= computer.user.name %>
+  <%= computer.cpu.name %>
+  <%= computer.gcard.name %>
+  <br>
+<% end %>

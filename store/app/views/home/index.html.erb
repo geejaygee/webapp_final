@@ -1,1 +1,17 @@
 <h1>Online Store</h1>
+<br>
+
+
+<p>
+<% if user_signed_in? %>
+Create a new computer build
+<%= button_to 'Create a new computer', new_computer_path, :class=>"button", :method => :get %>
+<% else %>
+Sign in to create a new computer build
+<% end %>
+</p>
+<p>
+view other builds
+<%= button_to 'View other Builds', computers_path, :class=>"button", :method => :get %>
+</p>
+

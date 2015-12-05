@@ -1,0 +1,11 @@
+<%= form_for ([@computer, @cpu]) do |x| %>
+  <h3> Add a CPU: </h3>
+  <div style="margin-left:30px:">
+    <div class="field">
+      <%= x.select (:user_id, @CPU_list)%>
+    </div>
+  </div>
+  <div class="actions">
+    <%= x.submit %>
+  </div>
+<% end %>

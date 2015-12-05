@@ -52,3 +52,7 @@ gcards = Gcard.create(
     { price: '240', name: "nvidia GTX 970"},
   ]
 )
+
+users.each do |user|
+  Computer.create(user_id: user.id, gcard_id: 1, cpu_id: 2, mboard_id: 3, case_id: 2, price: 500)
+end

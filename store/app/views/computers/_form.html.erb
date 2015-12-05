@@ -1,0 +1,47 @@
+<%= form_for @computer do |f| %>
+  <% if @computer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@computer.errors.count, "error") %> prevented this computer build from being created: </h2>
+      <ul>
+      <% @computer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h3>Select your CPU:</h3>
+  <div class="field">
+    <%=f.select(:cpu_id, @cpu_options) %>
+  </div>
+  
+  <br>
+  <h3>Select your motherboard:</h3>
+  <div class="field">
+    <%=f.select(:mboard_id, @mboard_options) %>
+  </div>
+  
+  <br>
+  <h3>Select your computer case</h3>
+  <div class="field">
+    <%= f.select(:case_id, @case_options) %>
+  </div>
+  
+  <br>  
+  <h3>Add a graphics card</h3>
+  <div class="field">
+    <%= f.select(:gcard_id, @gcard_options) %>
+  </div>
+ 
+  <br>
+  <h3>List price:</h>
+  <div class ="field">
+    <%= f.text_field :price %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
