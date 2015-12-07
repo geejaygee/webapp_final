@@ -4,4 +4,5 @@ class Computer < ActiveRecord::Base
   belongs_to :mboard
   belongs_to :gcard
   belongs_to :cpu
+ 
 end

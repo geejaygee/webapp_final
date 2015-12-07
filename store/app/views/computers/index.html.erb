@@ -1,7 +1,16 @@
 <h1> Computer index </h1>
-<% if @computers.size >= 1 %>
+<% if @computers.nil? %>
+Currently No Listings
+<% else %>
 <%= button_to 'Back', root_path, :class=>"button", :method => :get %>
 <br>
+  <%= form_tag computers_path, :method => 'get' do %>
+    <p>
+    <%= select_tag "option", options_for_select(['Everything', 'Users', 'Cpus', 'Motherboard', 'Graphics Cards', 'Cases'].map{|o|[o.humanize,o]}) %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
   <table cellpadding="3" border="1" cellpadding="1">
     <thread>
       <tr>

@@ -2,14 +2,13 @@ class ComputersController < ApplicationController
   before_action :set_computer, only: [ :edit, :update, :destroy]
   
   def index
-    @users=User.all
-    @computers=Computer.all
+    @query_options = ['Everything', 'Users', 'Graphics Cards', 'Motherboards', 'Cases'] 
+    search(params[:search], params[:option])
   end
  
   def show
     @computer = Computer.joins(:user).where(:user_id => params[:id])
-  end
- 
+  end 
   def new
     @computer=Computer.new
     @gcard_options=Gcard.all.map{|x| [x.name, x.id]}
@@ -45,4 +44,36 @@ class ComputersController < ApplicationController
     def computer_params
       params.require(:computer).permit( :gcard_id, :cpu_id, :mboard_id, :case_id, :quality, :price)
     end 
+
+    def search(query, choice)
+      if query
+        if query.blank?
+          @computers = Computer.all
+        else
+          if choice == 'Everything'
+            @computers = Computer.joins(:user).where('name LIKE ?', "%#{query}%")
+            @computers += Computer.joins(:cpu).where('name LIKE ?', "%#{query}%")
+            @computers += Computer.joins(:mboard).where('name LIKE ?', "%#{query}%")
+            @computers += Computer.joins(:gcard).where('name LIKE ?', "%#{query}%")
+            @computers += Computer.joins(:case).where('name LIKE ?', "%#{query}%")
+            @computers += Computer.where( :quality => query)
+            @computers += Computer.where( :price => query)
+            @computers.uniq!
+          elsif choice == 'Users'
+            @computers = Computer.joins(:user).where('name LIKE ?', "%#{query}%")
+          elsif choice == 'Cpus'
+            @computers = Computer.joins(:user).where('name LIKE ?', "%#{query}%")
+          elsif choice == 'Motherboard'
+            @computers = Computer.joins(:mboard).where('name LIKE ?', "%#{query}%")
+          elsif choice == 'Graphics Cards'
+            @computers = Computer.joins(:gcard).where('name LIKE ?', "%#{query}%")
+          elsif choice == 'Cases'
+            @computers = Computer.joins(:case).where('name LIKE ?', "%#{query}%")
+          end
+        end
+      else
+        @computers = Computer.all
+      end
+    end
+   
 end
