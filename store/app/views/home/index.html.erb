@@ -6,6 +6,11 @@
 <% if user_signed_in? %>
 Create a new computer build
 <%= button_to 'Create a new computer', new_computer_path, :class=>"button", :method => :get %>
+<br>
+<% if current_user.computers.size >= 1 %>
+    My computer postings:
+    <%= button_to 'My postings', computer_path(current_user), :class=>"button", :method => :get %>
+<% end %>
 <% else %>
 Sign in to create a new computer build
 <% end %>

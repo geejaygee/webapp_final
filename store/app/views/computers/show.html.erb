@@ -1,5 +1,43 @@
 <h1>Your computer listings</h1>
 
-<% current_user.computers.each do |computer| %>
-  <%= computer.gcard.name %>
-<% end %>
+
+  <table cellpadding="3" border="1" cellpadding="1">
+    <thread>
+      <tr>
+        <th> Listing </th>
+        <th> CPU </th>
+        <th> Graphics Card </th>
+        <th> Motherboard </th>
+        <th> Case </th>
+        <th> Quality </th>
+        <th> Price </th>
+        <th></th>
+      <tr>
+    </thread>
+    <tbody>
+      <% current_user.computers.each_with_index do |computer, index| %>
+      <tr>
+        computer id:<%= computer.id %>
+        <td style="text-align: center"> <%= index+1 %> </td>
+        <td style="text-align: center"><% if computer.cpu != nil %>
+              <%= computer.cpu.name %>
+            <% end %></td>
+        <td style="text-align: center"><% if computer.gcard != nil %>
+              <%= computer.gcard.name %>
+            <% end %></td>
+        <td style="text-align: center"><% if computer.mboard != nil %>
+              <%= computer.mboard.name %>
+            <% end %></td>
+        <td style="text-align: center"><% if computer.case !=nil %>
+              <%= computer.case.name %>
+            <% end %></td>
+        <td style="text-align: center"> <%= computer.quality %> </td>
+        <td style="text-align: center"> <%= computer.price %></td>
+        <td style="text-align: center"> <%= button_to 'Delete listing', computer, :class=>"button", method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= button_to 'Create a Listing', new_computer_path, :class=>"button", :method => :get %>
+<%= button_to 'Back', root_path, :class=>"button", :method => :get %>
+

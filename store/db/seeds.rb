@@ -23,36 +23,36 @@ users = User.create(
 
 cpus = Cpu.create(
   [
-    { price: '200', name: "OC 3.4ghz intel 5i"},
-    { price: '130', name: "cpu2"},
-    { price: '260', name: "cpu3"},
+    { name: "OC 3.4ghz intel 5i"},
+    { name: "cpu2"},
+    { name: "cpu3"},
   ]
 )
 
 cases = Case.create(
   [
-    { price: '30', name: "case 1"},
-    { price: '80', name: "case 2"},
-    { price: '130', name: "case 3"},
+    { name: "case 1"},
+    { name: "case 2"},
+    { name: "case 3"},
   ]
 )
 
 mboards = Mboard.create(
   [
-    { price: '80', name: "motherboard 1"},
-    { price: '140', name: "motherboard 2"},
-    { price: '220', name: "motherboard 3"},
+    { name: "motherboard 1"},
+    { name: "motherboard 2"},
+    { name: "motherboard 3"},
   ]
 )
 
 gcards = Gcard.create(
   [
-    { price: '120', name: "nvidia GTX 950"},
-    { price: '190', name: "nvidia GTX 960"},
-    { price: '240', name: "nvidia GTX 970"},
+    { name: "nvidia GTX 950"},
+    { name: "nvidia GTX 960"},
+    { name: "nvidia GTX 970"},
   ]
 )
 
 users.each do |user|
-  Computer.create(user_id: user.id, gcard_id: 1, cpu_id: 2, mboard_id: 3, case_id: 2, price: 500)
+  Computer.create(user_id: user.id, gcard_id: 1, cpu_id: 2, mboard_id: 3, case_id: 2, quality: 'good', price: 500)
 end

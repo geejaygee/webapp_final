@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20151203232234) do
 
   create_table "cases", force: :cascade do |t|
-    t.integer  "price"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151203232234) do
     t.integer  "cpu_id"
     t.integer  "mboard_id"
     t.integer  "case_id"
+    t.string   "quality"
     t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,21 +38,18 @@ ActiveRecord::Schema.define(version: 20151203232234) do
   add_index "computers", ["user_id"], name: "index_computers_on_user_id"
 
   create_table "cpus", force: :cascade do |t|
-    t.integer  "price"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "gcards", force: :cascade do |t|
-    t.integer  "price"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "mboards", force: :cascade do |t|
-    t.integer  "price"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

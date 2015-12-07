@@ -14,7 +14,8 @@
   <div class="field">
     <%=f.select(:cpu_id, @cpu_options) %>
   </div>
-  
+  Dont see your CPU? add one to the list:
+    
   <br>
   <h3>Select your motherboard:</h3>
   <div class="field">
@@ -34,14 +35,16 @@
   </div>
  
   <br>
+  <div class = "field">
+    <%= f.select( :quality , options_for_select(['new', 'good', 'okay','poor'])) %>
+  </div>
+  <br>
   <h3>List price:</h>
   <div class ="field">
     <%= f.text_field :price %>
   </div>
-
   <br>
   <div class="actions">
     <%= f.submit %>
   </div>
-
 <% end %>
