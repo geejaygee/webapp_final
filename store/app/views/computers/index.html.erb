@@ -2,7 +2,9 @@
 <% if @computers.nil? %>
 Currently No Listings
 <% else %>
-<%= button_to 'Back', root_path, :class=>"button", :method => :get %>
+<%= button_to root_path, :class=> "btn btn-danger", :method => :get do %>
+  <i class="glyphicon glyphicon-home"></i>
+<% end %>
 <br>
   <%= form_tag computers_path, :method => 'get' do %>
     <p>
@@ -11,37 +13,46 @@ Currently No Listings
     <%= submit_tag "Search", :name => nil %>
     </p>
   <% end %>
-  <table cellpadding="3" border="1" cellpadding="1">
+  <table class="table table-hover">
     <thread>
       <tr>
-        <th> User </th>
-        <th> CPU </th>
-        <th> Graphics Card </th>
-        <th> Motherboard </th>
-        <th> Case </th>
-	<th> Quality </th>
-        <th> Price </th>
-        <th> Contact: </th>
+        <th style="text-align: center", bgcolor="#b3ffb3"> User </th>
+        <th style="text-align: center", bgcolor="#ccffff"> CPU </th>
+        <th style="text-align: center", bgcolor="#ffccff"> Graphics Card </th>
+        <th style="text-align: center", bgcolor="#ccccff"> Motherboard </th>
+        <th style="text-align: center", bgcolor="#ccccff"> RAM </th>
+        <th style="text-align: center", bgcolor="#ccccff"> Storage </th>
+        <th style="text-align: center", bgcolor="#ffcccc"> Case </th>
+	<th style="text-align: center", bgcolor="#ffffcc"> Quality </th>
+        <th style="text-align: center", bgcolor="#ccffcc"> Price </th>
+        <th style="text-align: center", bgcolor="#ffffff"> Contact: </th>
       <tr>
     </thread>
     <tbody>
       <% @computers.each do |computer| %>
       <tr>
-        <td style="text-align: center"> <%= computer.user.name %> </td>
-        <td style="text-align: center"><% if computer.cpu != nil %>
+        <td style="text-align: center", bgcolor="#b3ffb3"> <%= computer.user.name %> </td>
+        <td style="text-align: center", bgcolor="#ccffff"><% if computer.cpu != nil %>
               <%= computer.cpu.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.gcard != nil %>
+        <td style="text-align: center", bgcolor="#ffccff"><% if computer.gcard != nil %>
               <%= computer.gcard.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.mboard != nil %>
+        <td style="text-align: center", bgcolor="#ccccff"><% if computer.mboard != nil %>
               <%= computer.mboard.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.case !=nil %>
+       <td style="text-align: center", bgcolor="#ccccff"><% if computer.ram != nil %>
+              <%= computer.ram.name %>
+            <% end %></td>
+       <td style="text-align: center", bgcolor="#ccccff"><% if computer.harddrive != nil %>
+              <%= computer.harddrive.name %>
+            <% end %></td>
+
+        <td style="text-align: center", bgcolor="#ffcccc"><% if computer.case !=nil %>
               <%= computer.case.name %>
             <% end %></td>
-        <td style="text-align: center"><%= computer.quality %></td>
-        <td style="text-align: center">$<%= computer.price %></td>
+        <td style="text-align: center", bgcolor="#ffffcc"><%= computer.quality %></td>
+        <td style="text-align: center", bgcolor="#ccffcc">$<%= computer.price %></td>
         <td style="text-align: center"> <%= computer.user.email %></td>
       </tr>
       <% end %>
@@ -49,4 +60,6 @@ Currently No Listings
   </table>
 <% end %>
 <br>
-<%= button_to 'Back', root_path, :class=>"button", :method => :get %>
+<%= button_to root_path, :class=> "btn btn-danger", :method => :get do %>
+  <i class="glyphicon glyphicon-home"></i>
+<% end %>

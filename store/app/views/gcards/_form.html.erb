@@ -1,0 +1,12 @@
+<%= form_for @gcard do |x| %>
+  <h3> Add a Graphics Card: </h3>
+  <div style="margin-left:30px:">
+    <div class="field">
+      <%= x.label :name %>
+      <%= x.text_field :name %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= x.submit "Add Graphics Card to list" %>
+  </div>
+<% end %>

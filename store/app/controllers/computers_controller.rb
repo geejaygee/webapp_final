@@ -15,6 +15,8 @@ class ComputersController < ApplicationController
     @cpu_options=Cpu.all.map{|x| [x.name, x.id]}
     @mboard_options=Mboard.all.map{|x| [x.name, x.id]}
     @case_options=Case.all.map{|x| [x.name, x.id]}
+    @ram_options=Ram.all.map{|x| [x.name, x.id]}
+    @harddrive_options=Harddrive.all.map{|x| [x.name, x.id]}
   end
 
   def create
@@ -29,7 +31,7 @@ class ComputersController < ApplicationController
 
   def destroy
     @computer.destroy
-    if !Computer.exists?(current_user)
+    if !Computer.joins(:user).exists?(:user_id => current_user.id)
       redirect_to root_path, notice: 'Listing destroyed'
     else
       redirect_to computer_path(current_user), notice: 'Listing destroyed.'
@@ -42,7 +44,7 @@ class ComputersController < ApplicationController
     end
 
     def computer_params
-      params.require(:computer).permit( :gcard_id, :cpu_id, :mboard_id, :case_id, :quality, :price)
+      params.require(:computer).permit( :gcard_id, :cpu_id, :mboard_id, :case_id, :ram_id, :harddrive_id, :quality, :price)
     end 
 
     def search(query, choice)

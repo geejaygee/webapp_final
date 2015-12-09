@@ -23,36 +23,68 @@ users = User.create(
 
 cpus = Cpu.create(
   [
-    { name: "OC 3.4ghz intel 5i"},
-    { name: "cpu2"},
-    { name: "cpu3"},
+    { name: "Intel Pentium G3258, 2 x 3.2ghz"},
+    { name: "Intel Pentium 945+, 2 x 3.4ghz"},
+    { name: "Intel i5-4690k, 4 x 3.5ghz"},
+    { name: "Intel i7-4790k, 4 x 4ghz"},
+    { name: "Intel i7-930, 4 x 2.8ghz"},
+    { name: "AMD Anthlon 860k Black Edition, 4 x 3.7ghz"},
+    { name: "AMD FX-8350 Black Edition, 8 x 4.0ghz"},
+    { name: "Intel Xeon E5-2698 v3, 16 x 2.3 ghz"},
   ]
 )
 
 cases = Case.create(
   [
-    { name: "case 1"},
-    { name: "case 2"},
-    { name: "case 3"},
+    { name: "Sentey Gs-6008 Plus Stealth Gaming Computer Case"},
+    { name: "Rosewill Dual Fans MicroATX Mini Tower Computer Case"},
+    { name: "Thermaltake Core P5 ATX Open Frame Mid Tower Wall Mount 180 Degree Liquid Cooling Gaming Computer Case"},
+    { name: "Corsair Carbide Series SPEC-02 Mid Tower Gaming Case"},
+    { name: "Apevia X-Sniper 2 Metal Case with Side Window-Green"},
+    { name: "NZXT S340 Mid Tower Case"},
+    { name: "NZXT Phantom 410 Mid Tower"},
+    { name: "Vivo ATX Mid Tower Computer Gaming PC Case"},
+    { name: "Raidmax Viper Black Gaming Tower Case"},
   ]
 )
 
 mboards = Mboard.create(
   [
-    { name: "motherboard 1"},
-    { name: "motherboard 2"},
-    { name: "motherboard 3"},
+    { name: "MSI 970 Gaming DDR3 2133 ATX Motherboard"},
+    { name: "ASUS ROG Maximus VII Formula ATX Motherboard"},
+    { name: "Asus Z97-A ATX Motherboard"},
+    { name: "Gigabyte 760G Micro Atx Motherboard"},
+    { name: "Gigabyte Z170 Gaming Motherboard"},
   ]
 )
 
 gcards = Gcard.create(
   [
-    { name: "nvidia GTX 950"},
-    { name: "nvidia GTX 960"},
-    { name: "nvidia GTX 970"},
+    { name: "None"},
+    { name: "Nvidia GTX 550"},
+    { name: "Nvidia GTX 850"},
+    { name: "Nvidia GTX 950"},
+    { name: "Nvidia GTX 960"},
+    { name: "Nvidia GTX 970"},
+    { name: "Nvidia Titan"},
+    { name: "AMD R7 370"},
+    { name: "AMD R7 240"},
   ]
 )
 
+rams = Ram.create(
+  [
+    { name: "ram1"},
+    { name: "ram2"},
+  ]
+)
+
+harddrives = Harddrive.create(
+  [
+    { name: "harddrive1"},
+    { name: "harddrive2"},
+  ]
+)
 users.each do |user|
-  Computer.create(user_id: user.id, gcard_id: 1, cpu_id: 2, mboard_id: 3, case_id: 2, quality: 'good', price: 500)
+  Computer.create(user_id: user.id, gcard_id: gcards.sample.id, cpu_id: cpus.sample.id, mboard_id: mboards.sample.id, case_id: cases.sample.id, harddrive_id: harddrives.sample.id, ram_id: rams.sample.id, quality: ['new','good','okay','poor'].sample, price: rand(1000))
 end

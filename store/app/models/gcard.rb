@@ -1,3 +1,3 @@
 class Gcard < ActiveRecord::Base
-  has_many :Computer
+  has_many :computer
 end

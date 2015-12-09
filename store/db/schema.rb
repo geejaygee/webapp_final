@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203232234) do
+ActiveRecord::Schema.define(version: 20151209221100) do
 
   create_table "cases", force: :cascade do |t|
     t.string   "name"
@@ -25,16 +25,20 @@ ActiveRecord::Schema.define(version: 20151203232234) do
     t.integer  "cpu_id"
     t.integer  "mboard_id"
     t.integer  "case_id"
+    t.integer  "ram_id"
+    t.integer  "harddrive_id"
     t.string   "quality"
     t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "computers", ["case_id"], name: "index_computers_on_case_id"
   add_index "computers", ["cpu_id"], name: "index_computers_on_cpu_id"
   add_index "computers", ["gcard_id"], name: "index_computers_on_gcard_id"
+  add_index "computers", ["harddrive_id"], name: "index_computers_on_harddrive_id"
   add_index "computers", ["mboard_id"], name: "index_computers_on_mboard_id"
+  add_index "computers", ["ram_id"], name: "index_computers_on_ram_id"
   add_index "computers", ["user_id"], name: "index_computers_on_user_id"
 
   create_table "cpus", force: :cascade do |t|
@@ -49,7 +53,19 @@ ActiveRecord::Schema.define(version: 20151203232234) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "harddrives", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mboards", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

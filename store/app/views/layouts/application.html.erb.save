@@ -15,7 +15,7 @@
     <% end %>
   </div>
 </head>
-<body style='background-color: #0099ff; padding: 25px'>
+<body style='background-color: #0099ff', margin>
 
 <%= yield %>
 

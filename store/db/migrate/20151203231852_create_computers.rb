@@ -6,6 +6,8 @@ class CreateComputers < ActiveRecord::Migration
       t.references :cpu, index: true, foreign_key: true
       t.references :mboard, index: true, foreign_key: true
       t.references :case, index: true, foreign_key: true
+      t.references :ram, index: true, foreign_key: true
+      t.references :harddrive, index: true, foreign_key:true
       t.string :quality
       t.integer :price
 

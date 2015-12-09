@@ -1,22 +1,42 @@
-<h1>Online Store</h1>
-<br>
-
+<html>
+<head>
+<style>
+div { 
+  margin: auto;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div>
+  <h1>Guillermos' Computer Market</h1>
+</div>
 
 <p>
+<div>
 <% if user_signed_in? %>
 Create a new computer build
-<%= button_to 'Create a new computer', new_computer_path, :class=>"button", :method => :get %>
+<%= button_to 'Create a new computer', new_computer_path, :class=>"btn btn-danger", :method => :get %>
+</div>
 <br>
+<div>
 <% if current_user.computers.size >= 1 %>
     My computer postings:
-    <%= button_to 'My postings', computer_path(current_user), :class=>"button", :method => :get %>
+    <%= button_to 'My postings', computer_path(current_user), :class=>"btn btn-danger", :method => :get %>
 <% end %>
+</div>
 <% else %>
+<div>
 Sign in to create a new computer build
+</div>
 <% end %>
 </p>
 <p>
+<div>
 view other builds
-<%= button_to 'View other Builds', computers_path, :class=>"button", :method => :get %>
+<%= button_to 'Computers For Sale', computers_path, :class=>"btn btn-danger", :method => :get%>
+</div>
 </p>
 
+</body>
+</html>

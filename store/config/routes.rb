@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :computers do
-    resources :cpus, shallow: true
-  end
-
+  resources :computers
+  resources :cpus
+  resources :mboards
+  resources :gcards
+  resources :cases
  root 'home#index'
  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

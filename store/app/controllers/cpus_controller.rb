@@ -3,7 +3,13 @@ class CpusController < ApplicationController
     @cpu=Cpu.new
   end
   
-  def create 
+  def create
+    @cpu=Cpu.new(cpu_params)
+    if @cpu.save
+      redirect_to new_computer_path, notice: 'Cpu Added'
+    else
+      render :new
+    end 
   end
 
   private

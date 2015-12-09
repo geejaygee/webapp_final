@@ -1,5 +1,5 @@
-<%= form_for ([@computer, @cpu]) do |x| %>
-  <h3> Add a CPU: </h3>
+<%= form_for @case do |x| %>
+  <h3> Add a Case: </h3>
   <div style="margin-left:30px:">
     <div class="field">
       <%= x.label :name %>
@@ -7,6 +7,6 @@
     </div>
   </div>
   <div class="actions">
-    <%= x.submit "Add CPU to list" %>
+    <%= x.submit "Add Case to list" %>
   </div>
 <% end %>
