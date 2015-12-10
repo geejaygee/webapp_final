@@ -13,7 +13,7 @@
     </center>
      <% else %>
     <center> <table>
-       <th style="padding: 2px"> <%= button_to "Sign up", new_user_registration_path, :class=>"btn btn-danger" %> <th> 
+       <th style="padding: 2px"> <%= button_to "Sign up", new_user_registration_path, :class=>"btn btn-danger", :method=>:get %> <th> 
        <th style="padding: 2px"> or </th>
        <th style="padding: 2px"> <%= button_to "Sign in", new_user_session_path, :class=>"btn btn-danger"%> <th>
      </table></center

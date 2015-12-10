@@ -74,17 +74,26 @@ gcards = Gcard.create(
 
 rams = Ram.create(
   [
-    { name: "ram1"},
-    { name: "ram2"},
+    { name: "HyperX 1600mhz, 8gb"},
+    { name: "Kingston 1333mhz, 4gb"},
+    { name: "Kingston 1600mhz, 16gb"},
   ]
 )
 
 harddrives = Harddrive.create(
   [
-    { name: "harddrive1"},
-    { name: "harddrive2"},
+    { name: "SSD 120GB"},
+    { name: "SSD 240GB"},
+    { name: "Hard drive 200GB"},
+    { name: "Hard drive 320GB"},
+    { name: "Hard Drive 1TB"},
   ]
 )
 users.each do |user|
-  Computer.create(user_id: user.id, gcard_id: gcards.sample.id, cpu_id: cpus.sample.id, mboard_id: mboards.sample.id, case_id: cases.sample.id, harddrive_id: harddrives.sample.id, ram_id: rams.sample.id, quality: ['new','good','okay','poor'].sample, price: rand(1000))
+  x=0;
+  y=Random.new;
+  while x < y.rand(4)+1
+    Computer.create(user_id: user.id, gcard_id: gcards.sample.id, cpu_id: cpus.sample.id, mboard_id: mboards.sample.id, case_id: cases.sample.id, harddrive_id: harddrives.sample.id, ram_id: rams.sample.id, quality: ['new','good','okay','poor'].sample, price: rand(2000)+100)
+  x=x+1;
+  end
 end

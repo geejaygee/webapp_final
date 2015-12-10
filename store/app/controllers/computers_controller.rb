@@ -51,6 +51,15 @@ class ComputersController < ApplicationController
       if query
         if query.blank?
           @computers = Computer.all
+           if (min && !min.blank? )
+              @computers = @computers.where('price >= ?', "#{min}")
+           end
+           if (max && !max.blank?)
+             @computers = @computers.where('price <= ?', "#{max}")
+           end
+           if (quality && !quality.blank?)
+             @computers = @computers.where('quality = ?', "#{quality}")
+           end
         else
           if choice == 'Everything'
             @computers = Computer.joins(:user).where('name LIKE ?', "%#{query}%")
@@ -80,7 +89,7 @@ class ComputersController < ApplicationController
       else
         @computers = Computer.all
         if (min && !min.blank? )
-          @computers = @computers.where('price > ?', "#{min}")
+          @computers = @computers.where('price >= ?', "#{min}")
         end
         if (max && !max.blank?)
           @computers = @computers.where('price <= ?', "#{max}")

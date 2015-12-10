@@ -4,51 +4,47 @@
   <table class="table table-hover">
     <thread>
       <tr>
-        <th style="text-align: center"> Listing </th>
-        <th style="text-align: center"> CPU </th>
-        <th style="text-align: center"> Graphics Card </th>
-        <th style="text-align: center"> Motherboard </th>
-        <th style="text-align: center"> RAM </th>
-        <th style="text-align: center"> Storage </th>
-        <th style="text-align: center"> Case </th>
-        <th style="text-align: center"> Quality </th>
-        <th style="text-align: center"> Price </th>
-        <th></th>
+        <th style="text-align: center", bgcolor="#b3ffb3"> Listing </th>
+        <th style="text-align: center", bgcolor="#ccffff"> CPU </th>
+        <th style="text-align: center", bgcolor="#ffccff"> Graphics Card </th>
+        <th style="text-align: center", bgcolor="#ccccff"> Motherboard </th>
+        <th style="text-align: center", bgcolor="#ffcccc"> RAM </th>
+        <th style="text-align: center", bgcolor="#ccffcc"> Storage </th>
+        <th style="text-align: center", bgcolor="#b3ffb3"> Case </th>
+        <th style="text-align: center", bgcolor="#ffccff"> Quality </th>
+        <th style="text-align: center", bgcolor="#ccccff"> Price </th>
+        <th bgcolor="#ffffff"></th>
       <tr>
     </thread>
     <tbody>
       <% current_user.computers.each_with_index do |computer, index| %>
       <tr>
-        computer id:<%= computer.id %>
-        <td style="text-align: center"> <%= index+1 %> </td>
-        <td style="text-align: center"><% if computer.cpu != nil %>
+        <td style="text-align: center", bgcolor="#b3ffb3"> <%= index+1 %> </td>
+        <td style="text-align: center", bgcolor="#ccffff"><% if computer.cpu != nil %>
               <%= computer.cpu.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.gcard != nil %>
+        <td style="text-align: center", bgcolor="#ffccff"><% if computer.gcard != nil %>
               <%= computer.gcard.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.mboard != nil %>
+        <td style="text-align: center", bgcolor="#ccccff"><% if computer.mboard != nil %>
               <%= computer.mboard.name %>
             <% end %></td>
-        <td style "text-align: center"><% if computer.ram != nil %>
+        <td style "text-align: center", bgcolor="#ffcccc"><% if computer.ram != nil %>
               <%= computer.ram.name %>
             <% end %></td>
-        <td style "text-align: center"><% if computer.harddrive != nil %>
+        <td style "text-align: center", bgcolor="#ccffcc"><% if computer.harddrive != nil %>
               <%= computer.harddrive.name %>
             <% end %></td>
-        <td style="text-align: center"><% if computer.case !=nil %>
+        <td style="text-align: center", bgcolor="#b3ffb3"><% if computer.case !=nil %>
               <%= computer.case.name %>
             <% end %></td>
-        <td style="text-align: center"> <%= computer.quality %> </td>
-        <td style="text-align: center"> <%= computer.price %></td>
-        <td style="text-align: center"> <%= button_to computer, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } do %>
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                        <% end %> </td>
+        <td style="text-align: center", bgcolor="#ffccff"> <%= computer.quality %> </td>
+        <td style="text-align: center", bgcolor="#ccccff"> <%= computer.price %></td>
+        <td style="text-align: center", bgcolor="#ffffff"> <%= button_to 'Delete',  computer, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 <%= button_to 'Create a Listing', new_computer_path, :class=>"btn btn-danger", :method => :get %>
-<%= button_to root_path, :class=>"btn btn-danger", :method => :get do %>
-<i class="glyphicon glyphicon-home"></i>
-<% end %>
+<br>
+<%= button_to 'Home', root_path, :class=>"btn btn-danger", :method => :get %>
