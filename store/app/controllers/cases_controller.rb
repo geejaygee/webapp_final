@@ -6,7 +6,7 @@ class CasesController < ApplicationController
   def create
     @case=Case.new(case_params)
     if @case.save
-      redirect_to new_computer_path, notice: 'Case Added'
+      redirect_to new_computer_path, notice: 'Case Added To List'
     else
       render :new
     end 

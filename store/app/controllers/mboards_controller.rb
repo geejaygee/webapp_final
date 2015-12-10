@@ -1,12 +1,12 @@
 class MboardsController < ApplicationController
   def new
-    @mbaord=Mboard.new
+    @mboard=Mboard.new
   end
   
   def create
     @mboard=Mboard.new(mboard_params)
     if @mboard.save
-      redirect_to new_computer_path, notice: 'Motherboard Added'
+      redirect_to new_computer_path, notice: 'Motherboard Added To List'
     else
       render :new
     end 

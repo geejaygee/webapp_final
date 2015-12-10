@@ -1,0 +1,12 @@
+<%= form_for @ram do |x| %>
+  <h3> Add RAM: </h3>
+  <div style="margin-left:30px:">
+    <div class="field">
+      <%= x.label :name %>
+      <%= x.text_field :name %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= x.submit "Add RAM to list" %>
+  </div>
+<% end %>

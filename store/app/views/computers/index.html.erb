@@ -2,14 +2,23 @@
 <% if @computers.nil? %>
 Currently No Listings
 <% else %>
-<%= button_to root_path, :class=> "btn btn-danger", :method => :get do %>
-  <i class="glyphicon glyphicon-home"></i>
-<% end %>
+<%= button_to 'Home', root_path, :class=> "btn btn-danger", :method => :get%>
 <br>
   <%= form_tag computers_path, :method => 'get' do %>
-    <p>
-    <%= select_tag "option", options_for_select(['Everything', 'Users', 'Cpus', 'Motherboard', 'Graphics Cards', 'Cases'].map{|o|[o.humanize,o]}) %>
-    <%= text_field_tag :search, params[:search] %>
+    <div id="accordion">
+    <h5> Search by word </h5>
+      <div>
+        <%= select_tag "option", options_for_select(['Everything', 'Users', 'Cpus', 'Motherboard', 'Graphics Cards', 'Cases', 'RAM', 'Storage'].map{|o|[o.humanize,o]}) %>
+        <%= text_field_tag :search, params[:search] %>
+      </div>
+    <h5> Search by Price or Quality <h5>
+      <div>
+        Price Range: <%= text_field_tag :min, params[:min] %> - <%= text_field_tag :max, params[:max] %>
+        <br>
+        <br>
+        Quality: <%= select_tag "quality", options_for_select(['','new', 'okay', 'good', 'poor'].map{|o|[o.humanize,o]}) %>
+      </div>
+    </div>
     <%= submit_tag "Search", :name => nil %>
     </p>
   <% end %>
@@ -20,11 +29,11 @@ Currently No Listings
         <th style="text-align: center", bgcolor="#ccffff"> CPU </th>
         <th style="text-align: center", bgcolor="#ffccff"> Graphics Card </th>
         <th style="text-align: center", bgcolor="#ccccff"> Motherboard </th>
-        <th style="text-align: center", bgcolor="#ccccff"> RAM </th>
-        <th style="text-align: center", bgcolor="#ccccff"> Storage </th>
-        <th style="text-align: center", bgcolor="#ffcccc"> Case </th>
-	<th style="text-align: center", bgcolor="#ffffcc"> Quality </th>
-        <th style="text-align: center", bgcolor="#ccffcc"> Price </th>
+        <th style="text-align: center", bgcolor="#ffcccc"> RAM </th>
+        <th style="text-align: center", bgcolor="#ccffcc"> Storage </th>
+        <th style="text-align: center", bgcolor="#b3ffb3"> Case </th>
+	<th style="text-align: center", bgcolor="#ffccff"> Quality </th>
+        <th style="text-align: center", bgcolor="#ccccff"> Price </th>
         <th style="text-align: center", bgcolor="#ffffff"> Contact: </th>
       <tr>
     </thread>
@@ -41,18 +50,18 @@ Currently No Listings
         <td style="text-align: center", bgcolor="#ccccff"><% if computer.mboard != nil %>
               <%= computer.mboard.name %>
             <% end %></td>
-       <td style="text-align: center", bgcolor="#ccccff"><% if computer.ram != nil %>
+       <td style="text-align: center", bgcolor="#ffcccc"><% if computer.ram != nil %>
               <%= computer.ram.name %>
             <% end %></td>
-       <td style="text-align: center", bgcolor="#ccccff"><% if computer.harddrive != nil %>
+       <td style="text-align: center", bgcolor="#ccffcc"><% if computer.harddrive != nil %>
               <%= computer.harddrive.name %>
             <% end %></td>
 
-        <td style="text-align: center", bgcolor="#ffcccc"><% if computer.case !=nil %>
+        <td style="text-align: center", bgcolor="#b3ffb3"><% if computer.case !=nil %>
               <%= computer.case.name %>
             <% end %></td>
-        <td style="text-align: center", bgcolor="#ffffcc"><%= computer.quality %></td>
-        <td style="text-align: center", bgcolor="#ccffcc">$<%= computer.price %></td>
+        <td style="text-align: center", bgcolor="#ffccff"><%= computer.quality %></td>
+        <td style="text-align: center", bgcolor="#ccccff">$<%= computer.price %></td>
         <td style="text-align: center"> <%= computer.user.email %></td>
       </tr>
       <% end %>
@@ -60,6 +69,5 @@ Currently No Listings
   </table>
 <% end %>
 <br>
-<%= button_to root_path, :class=> "btn btn-danger", :method => :get do %>
-  <i class="glyphicon glyphicon-home"></i>
-<% end %>
+<%= button_to 'Home', root_path, :class=> "btn btn-danger", :method => :get %>
+

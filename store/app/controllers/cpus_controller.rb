@@ -6,7 +6,7 @@ class CpusController < ApplicationController
   def create
     @cpu=Cpu.new(cpu_params)
     if @cpu.save
-      redirect_to new_computer_path, notice: 'Cpu Added'
+      redirect_to new_computer_path, notice: 'Cpu Added To The List'
     else
       render :new
     end 

@@ -6,7 +6,7 @@ class GcardsController < ApplicationController
   def create
     @gcard=Gcard.new(gcard_params)
     if @gcard.save
-      redirect_to new_computer_path, notice: 'Graphics Card Added'
+      redirect_to new_computer_path, notice: 'Graphics Card Added To List'
     else
       render :new
     end 

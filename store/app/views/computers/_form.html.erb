@@ -9,40 +9,56 @@
       </ul>
     </div>
   <% end %>
-  
-  <h3>Select your CPU:</h3>
-  <div class="field">
-    <%=f.select(:cpu_id, @cpu_options) %>
+  <div id="accordion">
+  <h5>Select your CPU</h5>
+  <div>
+    <div class="field">
+      <%=f.select(:cpu_id, @cpu_options) %>
+    </div>
   </div>
-  Dont see your CPU? add one to the list:
-    
-  <br>
-  <h3>Select your motherboard:</h3>
-  <div class="field">
-    <%=f.select(:mboard_id, @mboard_options) %>
+  <h5>Select your motherboard</h5>
+  <div>
+    <div class="field">
+      <%=f.select(:mboard_id, @mboard_options) %>
+    </div>
   </div>
-  
-  <br>
-  <h3>Select your computer case</h3>
-  <div class="field">
-    <%= f.select(:case_id, @case_options) %>
+  <h5>Select your RAM</h5>
+  <div>
+    <div class="field">
+      <%= f.select(:ram_id, @ram_options) %>
+    </div>
   </div>
-  
-  <br>  
-  <h3>Add a graphics card</h3>
-  <div class="field">
-    <%= f.select(:gcard_id, @gcard_options) %>
+  <h5>Select your Hard Drive</h5>
+  <div>  
+    <div class="field">
+      <%= f.select(:harddrive_id, @harddrive_options) %>
+    </div>
   </div>
- 
-  <br>
-  <div class = "field">
-    <%= f.select( :quality , options_for_select(['new', 'good', 'okay','poor'])) %>
-  </div>
-  <br>
-  <h3>List price:</h>
-  <div class ="field">
-    <%= f.text_field :price %>
-  </div>
+  <h5>Add a graphics card</h5>
+    <div> 
+      <div class="field">
+        <%= f.select(:gcard_id, @gcard_options) %>
+      </div>
+    </div>
+  <h5>Select your computer case</h5>
+    <div>
+      <div class="field">
+        <%= f.select(:case_id, @case_options) %>
+      </div>
+    </div>
+  <h5> Quality </h5>
+    <div>
+      <div class = "field">
+        <%= f.select( :quality , options_for_select(['new', 'good', 'okay','poor'])) %>
+      </div>
+    </div>
+  <h5>List price:</h5>
+    <div>
+      <div class ="field">
+        <%= f.text_field :price %>
+      </div>
+    </div>
+</div>
   <br>
   <div class="actions">
     <%= f.submit %>
