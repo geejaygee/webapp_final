@@ -7,17 +7,24 @@
   <%= csrf_meta_tags %>
   <div id="user_nav">
     <%if user_signed_in? %>
+    <center>
       Signed in as <%= current_user.email %>.  Not you?
-      <%=link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, {:style=>'color:#ff6666;', :class=>"css_class"} %> or 
-      <%= link_to "Sign in", new_user_session_path,  {:style=>'color:#ff6666;', :class=>"css_class"}%>
+      <%=button_to "Sign out", destroy_user_session_path, :class=>"btn btn-danger", method: :delete %>
+    </center>
+     <% else %>
+    <center> <table>
+       <th style="padding: 2px"> <%= button_to "Sign up", new_user_registration_path, :class=>"btn btn-danger" %> <th> 
+       <th style="padding: 2px"> or </th>
+       <th style="padding: 2px"> <%= button_to "Sign in", new_user_session_path, :class=>"btn btn-danger"%> <th>
+     </table></center
     <% end %>
   </div>
 </head>
+<center>
 <body style='background-color: #0099ff; padding: 25px'>
 
 <%= yield %>
 
 </body>
+<center>
 </html>
