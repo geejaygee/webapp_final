@@ -1,11 +1,14 @@
 # webapp_final
+  This project was design as the final project for Tyson Henrys' CINS 465 web application class at CSU Chico.
 #Project helpers
+  <p>
   This project makes use of Sqlite3 for the database and makes use of the following gems: 
   <ul>
     <li>'devise' for users and authentication</li>
     <li>'jquery' for javascript functionality</li>
     <li>'bootstrap-sass' for style (mainly buttons and tables)</li>
-    
+  </ul>
+  </p>
 # Computer trading post
   The idea behind this project was to create a website that allowed people to post computers they were selling.  Users could build a computer from selecting parts.  If a part doesn't exist the user can add a part to the list.  Once all the form fields have been filled out and submitted the computer will apear in the users list of computers they are selling.  This new listing will also reflect in the all users computer list.
   
