@@ -39,7 +39,7 @@
               <%= computer.case.name %>
             <% end %></td>
         <td style="text-align: center", bgcolor="#ffccff"> <%= computer.quality %> </td>
-        <td style="text-align: center", bgcolor="#ccccff"> <%= computer.price %></td>
+        <td style="text-align: center", bgcolor="#ccccff">$<%= computer.price %></td>
         <td style="text-align: center", bgcolor="#ffffff"> <%= button_to 'Delete',  computer, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>

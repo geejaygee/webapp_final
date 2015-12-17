@@ -25,7 +25,7 @@ class ComputersController < ApplicationController
     if @computer.save
       redirect_to root_path, notice: 'Computer Build Saved.'
     else
-      render :new
+      redirect_to new_computer_path, notice: 'Invalid Field'
     end
   end
 
